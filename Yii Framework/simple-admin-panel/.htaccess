@@ -1,0 +1,15 @@
+#DirectoryIndex index.html index.php
+
+Options +FollowSymLinks
+### Ban IP ###
+deny from 67.195.110.163 74.63.192.178 173.192.212.158 195.234.5.187
+### --/Ban IP ###
+IndexIgnore */*
+RewriteEngine on
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
