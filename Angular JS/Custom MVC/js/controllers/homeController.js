@@ -1,0 +1,5 @@
+var homeController = function($scope) {
+    //
+}
+
+

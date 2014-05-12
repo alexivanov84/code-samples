@@ -1,0 +1,23 @@
+<div class="jumbotron">
+	<h1>User Board</h1>
+        <a href="#/" ng-bind="">Test</a>
+	<div class="upload-div">
+		<div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">drop files here</div>
+		<div ng-show="!dropSupported">HTML5 Drop File is not supported on this browser</div>
+		<br/>
+		Progress:
+		<br/>
+		<div ng-show="selectedFiles != null">
+			<div class="sel-file" ng-repeat="f in selectedFiles">
+				{{($index + 1) + '.'}}
+				<img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}">
+				<button class="button" ng-click="start($index)" ng-show="progress[$index] < 0">Start</button>
+				<span class="progress" ng-show="progress[$index] >= 0">						
+					<div style="width:{{progress[$index]}}%">{{progress[$index]}}%</div>
+				</span>				
+				<button class="button" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">Abort</button>
+				{{f.name}} - size: {{f.size}}B - type: {{f.type}}
+			</div>
+		</div>
+	</div>
+</div>
